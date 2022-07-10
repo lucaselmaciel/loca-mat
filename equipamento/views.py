@@ -6,10 +6,16 @@ from .models import *
 
 class ListEquip(ListView):
     model = Equipamento
-    template_name: 'list_equipamento.html'
+    template_name: 'equipamento_list.html'
 
 class CreateEquip(CreateView):
     model = Equipamento
     fields = ['codigo', 'locacao_anterior', 'modelo', 'data_compra']
-    template_name = 'create_equipipamento.html'
-    success_url= '/equipamento'
+    template_name = 'equipamento/create_equipamento.html'
+    success_url= '/equipamento/list'
+
+class UpdateEquip(UpdateView):
+    model = Equipamento
+    fields = ['codigo', 'locacao_anterior', 'modelo', 'data_compra']
+    template_name = 'equipamento/update_equipamento.html'
+    success_url = '/equipamento/list'

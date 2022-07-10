@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+<a class="btn btn-primary" href="/equipamento/create" id="add-pessoa" style="margin: 15px;" >
+    Adicionar
+</a>
+<table class="table" style="margin: 15px;">
+    <thead>
+        <th scope="col">ID</th>
+        <th scope="col">Código</th>
+        <th scope="col">Data última locação</th>
+        <th scope="col">Modelo</th>
+        <th scope="col">Data da compra</th>
+        <th scope="col">Ações</th>
+    </thead>
+    <tbody>
+        {% for equipamento in object_list %}
+            <tr scope="row">
+                <td>
+                    {{ equipamento.id }}
+                </td>
+                <td>
+                    {{ equipamento.codigo }}
+                </td>
+                <td>
+                    {{ equipamento.locacao_anterior }}
+                </td>
+                <td>
+                    {{ equipamento.modelo }}
+                </td>
+                <td>
+                    {{ equipamento.data_compra }}
+                </td>
+                <td>
+                    <a href="/equipamento/update/{{ equipamento.id }}">Editar</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        
+      </div>
+    </div>
+</div>
+  
+{% endblock %}
