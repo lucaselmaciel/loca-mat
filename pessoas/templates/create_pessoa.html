@@ -1,0 +1,31 @@
+<!-- Modal -->
+{% include 'base.html' %}
+{% load widget_tweaks %}
+<!-- Modal -->
+<form method="post" action="{% url 'pessoa_add' %}">
+    {% csrf_token %}
+    <div class="col-md-12">
+        <div class="row">
+            {% for field in form %}
+                {% if field.name != 'status_atraso_pagamento' %}
+                    <div class="col-md-6">
+                        <label for="{{ field.id_for_label }}" class="control-label">{{ field.label }}</label>
+                        {{ field|add_class:'form-control' }}
+                        {% for error in field.errors %}
+                            <span class="help-block">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="col-md-6">
+                        {{ field }}
+                        <label for="{{ field.id_for_label }}" class="control-label">{{ field.label }}</label>
+                        {% for error in field.errors %}
+                            <span class="help-block">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <button class="btn btn-primary" type="submit">Salvar</button>
+    </div>
+</form>

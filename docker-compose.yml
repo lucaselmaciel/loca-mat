@@ -1,0 +1,30 @@
+version: '3.4'
+
+services:
+  postgres:
+    build:
+      context: .
+      dockerfile: ./Dockerfile-postgres 
+    volumes:
+      - ./database-data:/var/lib/postgresql-static/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=loca_mat
+    container_name: 'postgres_container'
+    ports: 
+      - 5431:5432
+
+  web:
+    build: .
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000
+            "
+    volumes:
+      - .:/code
+    ports:
+      - 8000:8000
+    depends_on:
+      - postgres
+      
