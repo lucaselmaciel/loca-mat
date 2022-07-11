@@ -33,6 +33,7 @@
                 </td>
                 <td>
                     <a href="/equipamento/update/{{ equipamento.id }}">Editar</a>
+                    <a onclick="confirm_delete('{{ equipamento.id }}')" style="cursor: pointer;">Deletar</a>
                 </td>
             </tr>
         {% endfor %}
@@ -47,5 +48,32 @@
       </div>
     </div>
 </div>
+
+<script>
+    function confirm_delete(register_id){
+        bootbox.confirm({
+            message: 'Tem certeza que deseja deletar o registro?',
+            buttons: {
+                confirm: {
+                    label: 'Confirmar',
+                    className: 'btn-success'
+                },
+                cancel:{
+                    label: 'Cancelar',
+                    className: 'btn-primary'
+                }
+            },
+            callback: function(result){
+                const xhttp = new XMLHttpRequest();
+                if(result == true){
+                    xhttp.open('POST', `/equipamento/delete/${register_id}`, true);
+                    xhttp.send();
+                }
+            }
+        })
+
+    }
+
+</script>
   
 {% endblock %}

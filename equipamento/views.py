@@ -19,3 +19,7 @@ class UpdateEquip(UpdateView):
     fields = ['codigo', 'locacao_anterior', 'modelo', 'data_compra']
     template_name = 'equipamento/update_equipamento.html'
     success_url = '/equipamento/list'
+
+class DeleteEquip(DeleteView):
+    model = Equipamento
+    success_url = '/equipamento/list'
