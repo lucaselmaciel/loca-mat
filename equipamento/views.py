@@ -21,8 +21,9 @@ class EquipFormView(FormView):
 
 class UpdateEquip(UpdateView):
     model = Equipamento
-    fields = ['codigo', 'locacao_anterior', 'modelo', 'data_compra']
+    # fields = ['codigo', 'locacao_anterior', 'modelo', 'data_compra']
     template_name = 'equipamento/update_equipamento.html'
+    form_class = EquipamentoForm
     success_url = '/equipamento/list'
 
 class DeleteEquip(DeleteView):

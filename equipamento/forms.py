@@ -16,5 +16,11 @@ class EquipamentoForm(forms.ModelForm):
                 'class': 'form-control',
                 'data-inputmask-alias':"datetime",
                 'data-inputmask-inputformat': 'dd/mm/aaaa'
+            }),
+            'codigo': forms.TextInput(attrs={
+                'class': 'form-control'
+            }),
+            'modelo': forms.TextInput(attrs={
+                'class': 'form-control'
             })
         }
