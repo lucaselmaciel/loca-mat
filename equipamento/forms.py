@@ -24,3 +24,23 @@ class EquipamentoForm(forms.ModelForm):
                 'class': 'form-control'
             })
         }
+
+
+class ModeloForm(forms.ModelForm):
+    class Meta:
+        model = Modelos
+        fields = '__all__'
+        widgets = {
+            'facricacao': forms.NumberInput(attrs={
+                'class': 'form-control',
+                'min': '2010'
+            }),
+            'marca': forms.TextInput(attrs={
+                'class': 'form-control',
+
+            }),
+            'estado_conservacao': forms.Select(attrs={
+                'class': 'form-control'
+            })
+
+        }

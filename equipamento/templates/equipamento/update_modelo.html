@@ -1,0 +1,21 @@
+<!-- Modal -->
+{% include 'base.html' %}
+{% load crispy_forms_tags %}
+<!-- Modal -->
+<div class="row g-3">
+    <div class="col">
+        <form method="post" class="d-flex flex-row align-items-center flex-wrap" style="padding: 25px;">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="col-md-5" style="margin-left: 90px;">
+                <label for="{{ field.name }}">{{ field.label }}</label>
+                {{ field }}
+            </div>        
+        {% endfor %}
+        <div class="col-md-12">
+            <button class="btn btn-primary" type="submit" style="margin: 25px 90px; position: relative;">Salvar</button>
+        </div>
+        </form>
+        
+    </div>
+</div>

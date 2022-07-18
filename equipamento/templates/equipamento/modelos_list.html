@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<a class="btn btn-primary" href="/equipamento/create-modelo" id="add-pessoa" style="margin: 15px;" >
+    Adicionar
+</a>
+<table class="table" style="margin: 15px;">
+    <thead>
+        <th scope="col">Fabricação</th>
+        <th scope="col">Marca</th>
+        <th scope="col">Estado de Conservação</th>
+        <th scope="col">Ações</th>
+    </thead>
+    <tbody>
+        {% for modelo in object_list %}
+            <tr scope="row">
+                <td>
+                    {{ modelo.facricacao }}
+                </td>
+                <td>
+                    {{ modelo.marca }}
+                </td>
+                <td>
+                    {{ modelo.estado_conservacao }}
+                </td>
+                <td>
+                    <a href="/modelo/update/{{ modelo.id }}">Editar</a>
+                    <a href="/modelo/delete/{{ modelo.id }}" style="cursor: pointer;">Deletar</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

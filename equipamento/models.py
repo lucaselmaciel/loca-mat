@@ -10,3 +10,10 @@ class Equipamento(TimestampedModel):
 
     def __str__(self) -> str:
         return str(self.modelo)
+
+
+class Modelos(TimestampedModel):
+    facricacao = models.CharField(null=True, blank=True, max_length=255)
+    marca = models.CharField(null=False, blank=False, max_length=255)
+    estado_conservacao = models.CharField(choices=(('1', 'Ruim'), ('2', 'Bom'), ('3', 'Ótimo')), null=False, blank=False, max_length=255)
+
