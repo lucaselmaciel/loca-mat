@@ -44,3 +44,21 @@ class ModeloForm(forms.ModelForm):
             })
 
         }
+
+
+class LocacaoForm(forms.Form):
+    class Meta:
+        model = Locacoes
+        fields = ['cliente', 'equipamento', 'endereco']
+        widgets = {
+            'cliente': forms.Select(attrs={
+                'class': 'form-control'
+            }),
+            'equipamento': forms.Select(attrs={
+                'class': 'form-control'
+            }),
+            'endereco': forms.TextInput(attrs={
+                'class': 'form-control',
+                'id': 'busca_endereco'
+            })
+        }

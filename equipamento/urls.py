@@ -9,5 +9,7 @@ urlpatterns = [
     path("/list-modelos", views.ListModelo.as_view(), name='list_modelo'),
     path("/create-modelo", views.CreateModeloFormView.as_view(), name='create_modelo'),
     path("/update-modelo/<pk>", views.UpdateModeloFormView.as_view(), name='update_modelo'),
-    path("/delete-modelo/<pk>", views.DeleteModelo.as_view(), name="delete_modelo")
+    path("/delete-modelo/<pk>", views.DeleteModelo.as_view(), name="delete_modelo"),
+    path("/list-locacoes", views.ListLocacoesView.as_view(), name='list_locacoes'),
+    path("/create-locacao", views.CreateLocacaoFormView.as_view(), name='create_locacao'),
 ]

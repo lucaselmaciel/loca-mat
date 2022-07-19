@@ -59,6 +59,24 @@ class DeleteModelo(DeleteView):
     success_url = '/equipamento/list-modelos'
 
 
+class ListLocacoesView(ListView):
+    model = Locacoes
+    template_name = 'locacoes_list.html'
 
+
+class CreateLocacaoFormView(FormView):
+    template_name = 'equipamento/create_locacao.html'
+    form_class = LocacaoForm
+    success_url = '/equipamento/list-locacoes'
+
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
+
+
+class UpdateLocacaoView(FormView):
+    form_class = LocacaoForm
+    template_name = '/equipamento/update_locacao.html'
+    success_url = '/equipamento/list-locacoes'
 
 
