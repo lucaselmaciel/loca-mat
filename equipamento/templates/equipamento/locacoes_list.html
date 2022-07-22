@@ -1,31 +1,35 @@
 {% extends "base.html" %}
 
 {% block content %}
-<a class="btn btn-primary" href="/equipamento/create-modelo" id="add-pessoa" style="margin: 15px;" >
+<a class="btn btn-primary" href="/equipamento/create-locacao" id="add-pessoa" style="margin: 15px;" >
     Adicionar
 </a>
 <table class="table" style="margin: 15px;">
     <thead>
-        <th scope="col">Fabricação</th>
-        <th scope="col">Marca</th>
-        <th scope="col">Estado de Conservação</th>
+        <th scope="col">Cadastro</th>
+        <th scope="col">Cliente</th>
+        <th scope="col">Equipamento</th>
+        <th scope="col">Endereco</th>
         <th scope="col">Ações</th>
     </thead>
     <tbody>
-        {% for modelo in object_list %}
+        {% for locacao in object_list %}
             <tr scope="row">
                 <td>
-                    {{ modelo.facricacao }}
+                    {{ locacao.criado }}
                 </td>
                 <td>
-                    {{ modelo.marca }}
+                    {{ locacao.cliente }}
                 </td>
                 <td>
-                    {{ modelo.estado_conservacao }}
+                    {{ locacao.equipamento }}
                 </td>
                 <td>
-                    <a href="/modelo/update/{{ modelo.id }}">Editar</a>
-                    <a href="/modelo/delete/{{ modelo.id }}" style="cursor: pointer;">Deletar</a>
+                    {{ locacao.endereco }}
+                </td>
+                <td>
+                    <a href="/equipamento/update-locacao/{{ locacao.id }}">Editar</a>
+                    <a href="/equipamento/delete-locacao/{{ locacao.id }}" style="cursor: pointer;">Deletar</a>
                 </td>
             </tr>
         {% endfor %}

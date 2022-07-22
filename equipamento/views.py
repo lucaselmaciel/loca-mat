@@ -74,9 +74,13 @@ class CreateLocacaoFormView(FormView):
         return super().form_valid(form)
 
 
-class UpdateLocacaoView(FormView):
+class UpdateLocacaoFormView(FormView):
     form_class = LocacaoForm
     template_name = '/equipamento/update_locacao.html'
     success_url = '/equipamento/list-locacoes'
 
+
+class DeleteLocacaoView(DeleteView):
+    model = Locacoes
+    success_url = '/equipamento/list-locacoes'
 

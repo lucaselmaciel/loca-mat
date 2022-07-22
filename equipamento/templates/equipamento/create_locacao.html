@@ -1,33 +1,26 @@
-{% extends "base.html" %}
+{% include 'base.html' %}
+{% load crispy_forms_tags %}
 
-<!-- {% block content %} -->
-    <div class="row g-3">
-        <div class="col">
-            <form method="post" class="d-flex flex-row align-items-center flex-wrap" style="padding: 25px;">
-                {% csrf_token %}
-                {% for field in form %}
-                    <div class="col-md-5" style="margin-left: 90px;">
-                        <label for="{{ field.name }}">{{ field.label }}</label>
-                        {{ field }}
-                    </div>        
-                {% endfor %}
-                <div class="col-md-12">
-                    <button class="btn btn-primary" type="submit" style="margin: 25px 90px; position: relative;">Salvar</button>
-                </div>
-            </form>
-        </div>
+<form method="post" style="padding: 25px;">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <div class="col-md-12">
+        <button class="btn btn-primary" type="submit" style="margin: 25px 90px; position: relative;">Salvar</button>
     </div>
-<!-- {% endblock %} -->
+</form>
 
 <script>
     document.querySelector('#busca_endereco').addEventListener('keypress',
     function httpGet(e){
+        // console.log(e);
         if(e.key === 'Enter'){
-            var search = document.getElementById('#busca_endereco').value
+            var search = document.getElementById('busca_endereco').value
+            console.log(search);
             var xmlHttp = new XMLHttpRequest();
-            xmlHttp.open( "GET", `http://api.positionstack.com/v1/forward?access_key=89c02e2b1278651fe30af13dd089d2ca&query=${search}?output=json`, false ); // false for synchronous request
+            xmlHttp.open( "GET", `http://api.positionstack.com/v1/forward?access_key=89c02e2b1278651fe30af13dd089d2ca&query=${search}`, false ); // false for synchronous request
             xmlHttp.send( null );
-            console.log(xmlHttp.responseText);
+            console.log(JSON.parse(xmlHttp.response).data[0].label);
+            document.getElementById('busca_endereco').value = JSON.parse(xmlHttp.response).data[0].label
             return xmlHttp.responseText;
         }
     })

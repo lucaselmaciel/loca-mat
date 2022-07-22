@@ -46,7 +46,7 @@ class ModeloForm(forms.ModelForm):
         }
 
 
-class LocacaoForm(forms.Form):
+class LocacaoForm(forms.ModelForm):
     class Meta:
         model = Locacoes
         fields = ['cliente', 'equipamento', 'endereco']

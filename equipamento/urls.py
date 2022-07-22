@@ -12,4 +12,6 @@ urlpatterns = [
     path("/delete-modelo/<pk>", views.DeleteModelo.as_view(), name="delete_modelo"),
     path("/list-locacoes", views.ListLocacoesView.as_view(), name='list_locacoes'),
     path("/create-locacao", views.CreateLocacaoFormView.as_view(), name='create_locacao'),
+    path("/update-locacao/<pk>", views.UpdateLocacaoFormView.as_view(), name='update_locacao'),
+    path("/delete-locacao/<pk>", views.DeleteLocacaoView.as_view(), name='delete_locacao'),
 ]
